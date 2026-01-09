@@ -56,7 +56,7 @@ public class Network {
      *  If any of the two names is not a user in this network,
      *  or if the "follows" addition failed for some reason, returns false. */
     public boolean addFollowee(String name1, String name2) {
-       if(getUser(name1) != null && getUser(name2) != null )
+       if(getUser(name1) == null && getUser(name2) == null )
        {
             if(getUser(name1).addFollowee(name2)){
                 return true;
@@ -84,7 +84,7 @@ public class Network {
         {
             return reco.getName();
         }
-        return "none";
+        return null;
     }
 
     /** Computes and returns the name of the most popular user in this network: 
@@ -93,15 +93,18 @@ public class Network {
        User pop = null;
        int max =-1;
        for (int i = 0; i < userCount; i++) {
-            if(followeeCount(users[i].getName()) > max)
+            if(followeeCount(users[i].getName()) >= max)
             {
                 pop = users[i];
                 max = followeeCount(users[i].getName());
             }
        }
-       
+    if (pop != null) {
         return pop.getName();
+    } else { 
+        return null;
     }
+  } 
 
     /** Returns the number of times that the given name appears in the follows lists of all
      *  the users in this network. Note: A name can appear 0 or 1 times in each list. */
