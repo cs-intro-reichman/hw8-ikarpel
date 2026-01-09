@@ -56,7 +56,7 @@ public class Network {
      *  If any of the two names is not a user in this network,
      *  or if the "follows" addition failed for some reason, returns false. */
     public boolean addFollowee(String name1, String name2) {
-       if(getUser(name1) == null && getUser(name2) == null )
+       if(getUser(name1) != null && getUser(name2) != null )
        {
             if(getUser(name1).addFollowee(name2)){
                 return true;
@@ -69,12 +69,12 @@ public class Network {
      *  the user that has the maximal mutual number of followees as the user with the given name. */
     public String recommendWhoToFollow(String name) {
         User reco = null;
-        int max =0;
+        int max =-1;
         User u = getUser(name);
         for (int i = 0; i < userCount; i++) {
             if (!u.follows(users[i].getName()) && !users[i].getName().equals(name)){
         
-                if (users[i].countMutual(u) > max) {
+                if (users[i].countMutual(u) >= max) {
                     reco = users[i];
                     max = users[i].countMutual(u);
                 }
