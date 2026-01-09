@@ -56,7 +56,7 @@ public class Network {
      *  If any of the two names is not a user in this network,
      *  or if the "follows" addition failed for some reason, returns false. */
     public boolean addFollowee(String name1, String name2) {
-       if(getUser(name1) != null && getUser(name2) != null )
+       if(getUser(name1) != null && getUser(name2) != null && name1 != name2)
        {
             if(getUser(name1).addFollowee(name2)){
                 return true;
@@ -74,7 +74,7 @@ public class Network {
         for (int i = 0; i < userCount; i++) {
             if (!u.follows(users[i].getName()) && !users[i].getName().equals(name)){
         
-                if (users[i].countMutual(u) >= max) {
+                if (users[i].countMutual(u) > max) {
                     reco = users[i];
                     max = users[i].countMutual(u);
                 }
