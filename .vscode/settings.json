@@ -1,0 +1,14 @@
+{
+  // הצג הצעות כשהמשתמש מקליד, אך אל תקבל השלמה אוטומטית על ידי תו commit
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": false
+  },
+  "editor.suggestOnTriggerCharacters": true,
+  "editor.inlineSuggest.enabled": false,
+  // למנוע קבלה אוטומטית של ההצעה כשמקלידים תווים כמו '.'
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  // השאר Enter לקבלת הצעה שלחצת עליה באופן מפורש
+  "editor.acceptSuggestionOnEnter": "on"
+}
