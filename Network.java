@@ -93,7 +93,7 @@ public class Network {
        User pop = null;
        int max =-1;
        for (int i = 0; i < userCount; i++) {
-            if(followeeCount(users[i].getName()) >= max)
+            if(followeeCount(users[i].getName()) > max)
             {
                 pop = users[i];
                 max = followeeCount(users[i].getName());
@@ -122,7 +122,7 @@ public class Network {
     public String toString() {
         String dep ="Network:";
        for (int i = 0; i < userCount; i++) {
-           dep += users[i].toString() +"\n";
+           dep += "\n" +users[i].toString();
        }
        return dep;
     }
